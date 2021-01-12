@@ -29,6 +29,7 @@
       - { name: google-chrome }
       - { name: slack }
       - { name: dash }
+      - { name: brave-browser }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
@@ -55,6 +56,8 @@
     - name: brew パッケージの情報を保存
       shell: brew info {{ item }} > brew_info/{{ item }}
       with_items: brew_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+    - name: brew パッケージのアップデート
+      shell: brew upgrade
 
     # cask
     - name: homebrew-cask のインストール
@@ -68,12 +71,14 @@
     - name: cask パッケージの情報を保存
       shell: brew cask info {{ item }} > cask_info/{{ item }}
       with_items: cask_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+    - name: cask パッケージのアップデート
+      shell: brew cask upgrade
 
     # oh-my-zsh
-    - name: oh-my-zsh のインストール
-      shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-      args:
-        creates: ~/.oh-my-zsh/
+    #- name: oh-my-zsh のインストール
+      #shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+      #args:
+        #creates: ~/.oh-my-zsh/
 
     # Ricty
     - name: xquartz のインストール (for Ricty)
@@ -87,6 +92,12 @@
       args:
         creates: ~/Library/Fonts/Ricty-Bold.ttf
       notify: run fc-cache
+
+    # Macの設定
+    - name: 隠しファイルを表示
+      shell: defaults write com.apple.finder AppleShowAllFiles -boolean true
+    - name: .DS_Storeファイルを作成しない
+      shell: defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
   handlers:
     - name: run fc-cache
