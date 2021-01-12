@@ -1,0 +1,11 @@
+Adobe XD
+Alfred 4.app
+Backup and Sync.app
+Clipy.app
+GoogleJapaneseInput.localized
+LINE.app
+LadioCast.app
+LibreOffice.app
+Memory Cleaner X.app
+Wake Up Time.app
+zoom.us.app
