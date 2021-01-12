@@ -1,0 +1,42 @@
+" Regexp Settings
+set re=1
+" Colorscheme
+colorscheme hybrid
+" Global Settings
+set background=dark
+set tabstop=2
+set shiftwidth=2
+set clipboard=unnamed,autoselect
+" Plugin Settings
+let g:indent_guides_enable_on_vim_startup = 1
+let g:syntastic_ruby_checkers = ['rubocop']
+" Tabs
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sc :<C-u>tabclose<CR>
+nnoremap st :<C-u>tabnew<CR>
+nmap<leader>rc :Rails console
+" Default
+nnoremap \i :Autoformat<CR>
+nnoremap \a ggvG$<CR>
+nnoremap <C-j> i<CR><ESC>
+nnoremap <C-m> O<ESC>
+nnoremap <C-M> o<ESC>
+nnoremap <Space> i<Space><ESC>
+" Delete
+nnoremap <C-h> i<BS><RIGHT><ESC>
+imap <C-k> <ESC>d$i
+imap <C-y> <ESC>pi
+imap <C-d> <ESC>xi
+" Move
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-n> <Down>
+inoremap <C-p> <UP>
+inoremap <C-d> <ESC>xi
+imap <C-a>  <Home>
+imap <C-e>  <End>
+imap <C-b>  <Left>
+imap <C-f>  <Right>

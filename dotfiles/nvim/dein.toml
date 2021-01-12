@@ -1,0 +1,74 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = 'source $XDG_CONFIG_HOME/nvim/plugins/vim-hybrid.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'source $XDG_CONFIG_HOME/nvim/plugins/lightline.vim'
+
+[[plugins]] # カーソル位置のコンテキストにあわせてFiletypeを切り替える
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]] # カーソル位置のコンテキストのFiletypeを判定する
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+  source $XDG_CONFIG_HOME/nvim/plugins/denite.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = 'source $XDG_CONFIG_HOME/nvim/plugins/vimproc.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_post_update = '''
+  let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+'''
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo =  'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = 'source $XDG_CONFIG_HOME/nvim/plugins/vim-anzu.vim'
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
