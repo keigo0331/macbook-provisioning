@@ -19,6 +19,7 @@
       - { name: rbenv }
       - { name: tmux }
       - { name: zsh }
+      - { name: docker }
     homebrew_cask_packages:
       - { name: obs }
       - { name: soundflower }
@@ -30,6 +31,7 @@
       - { name: slack }
       - { name: dash }
       - { name: brave-browser }
+      - { name: docker }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
