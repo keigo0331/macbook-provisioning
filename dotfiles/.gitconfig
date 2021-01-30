@@ -6,15 +6,16 @@
 
 [alias]
   # add
-  an  = "!f() { git status -s | nl -s _ | grep \"\\s$1_\" | cut -d _ -f 2 | cut -c 3- | xargs -I % git add %; }; f"
+  an  = "!f() { git status -s | nl -s _ | grep \"^\\s*$1_\" | cut -d _ -f 2 | cut -c 3- | xargs -I % git add %; }; f"
 
   # add & commit
   acal = "!git add -A; git commit -m "
   acam = "!git add -A; git commit --amend"
   acf  = "!f() { git status -s | sed -n 1p | cut -c 3-; }; git add `f`; git commit -m `f`"
-  acfm = "!f() { git status -s | sed -n 1p | cut -c 3-;  }; echo Write commit message for [`f` ]" && read message && "f() { git status -s | sed -n 1p | cut -c 3-; }; git add `f`; git commit -m \"$message @`f`\""
-  ;acn  = !echo What number? && read number && echo Write message. && read message && "f() { git status -s | nl -s _ | grep \"\\s$number_\" | cut -d _ -f 2 | cut -c 3-; }; git add `f`; git commit -m \"$message @`f`\""
-  acn  = !echo What number? && read number && echo Write message. && read message && "f() { git status -s | nl -s _ | grep \"\\s$number_\" | cut -d _ -f 2 | cut -c 3-; }; echo `f`"
+  acfm = "!f() { git status -s | sed -n 1p | cut -c 3-;  }; echo Write commit message for [`f` ]" \
+    && read message && "f() { git status -s | sed -n 1p | cut -c 3-; }; git add `f`; git commit -m \"$message @`f`\""
+  acn  = !echo Write message. && read message \
+    && "file=`git status -s | nl -s _ | grep \"^\\s*$1_\" | cut -d _ -f 2 | cut -c 3-`; f() { git add $file; git commit -m \"$message @$file\"; }; f"
 
   # branch
   b   = "!git branch | nl"
@@ -28,6 +29,7 @@
 
   # checkout
   co  = checkout
+  cob = checkout -b
   cod = checkout develop
   com = checkout master
   con = "!f() { git branch | nl -s _ | grep \"\\s$1_\" | cut -d _ -f 2 | xargs -I % git checkout %; }; f"
@@ -42,7 +44,7 @@
   lp  = log -p
 
   # pull
-  pl = pull --prune
+  pl  = pull --prune
   plm = pull --prune origin master
 
   # push
@@ -54,8 +56,6 @@
   rbc = rebase --continue
   rbd = rebase develop
   rbi = "!f() { git rebase -i head~$1; }; f"
-
-  # rebase & reset
 
   # reset
   rs   = reset
