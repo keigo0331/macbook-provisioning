@@ -105,9 +105,9 @@ function _update_vcs_info_msg() {
         prompt=""
     else
       if [[ -n $(echo "$vcs_info_msg_1_""$vcs_info_msg_2_" | sed 's/ //g') ]]; then
-          messages+=( "%F{red}${vcs_info_msg_0_}%f" )
+          messages+=( " | %F{red}${vcs_info_msg_0_}%f" )
       else
-          messages+=( "%F{green}${vcs_info_msg_0_}%f" )
+          messages+=( " | %F{green}${vcs_info_msg_0_}%f" )
       fi
 
       [[ -n $(echo $vcs_info_msg_1_ | sed 's/ //g') ]] && messages+=( "%F{yellow}$(echo $vcs_info_msg_1_ | sed 's/ //g')%f" )
@@ -119,7 +119,7 @@ function _update_vcs_info_msg() {
     echo $prompt
 }
 
-PROMPT="%{${fg[green]}%}%~%{${reset_color}%} | "$'`_update_vcs_info_msg` $ '
+PROMPT="%{${fg[green]}%}%~%{${reset_color}%}"$'`_update_vcs_info_msg` $ '
 
 # Load plugin
 zinit light zsh-users/zsh-autosuggestions
