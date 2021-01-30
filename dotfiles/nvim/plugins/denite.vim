@@ -1,4 +1,4 @@
-nmap <silent> <C-u><C-f> :<C-u>Denite file_rec<CR>
+nmap <silent> <C-u><C-f> :<C-u>Denite file/rec<CR>
 nmap <silent> <C-u><C-d> :<C-u>Denite directory_rec<CR>
 nmap <silent> <C-u><C-l> :<C-u>Denite line<CR>
 nmap <silent> <C-u><C-g> :<C-u>Denite grep<CR>
