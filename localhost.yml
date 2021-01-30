@@ -7,6 +7,7 @@
       - caskroom/cask
       - sanemat/font
       - neovim/neovim
+      - homebrew/cask-fonts
     homebrew_packages:
       - { name: readline }
       - { name: openssl }
@@ -20,6 +21,7 @@
       - { name: tmux }
       - { name: zsh }
       - { name: docker }
+      - { name: wget }
     homebrew_cask_packages:
       - { name: obs }
       - { name: soundflower }
@@ -32,6 +34,7 @@
       - { name: dash }
       - { name: brave-browser }
       - { name: docker }
+      - { name: font-ricty-diminished }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
@@ -76,24 +79,17 @@
     - name: cask パッケージのアップデート
       shell: brew cask upgrade
 
-    # oh-my-zsh
-    #- name: oh-my-zsh のインストール
-      #shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-      #args:
-        #creates: ~/.oh-my-zsh/
+    # シンボリックリンクを設定
+    - name: シンボリックリンクを設定
+      shell: sh symbolic_links.sh
 
-    # Ricty
-    - name: xquartz のインストール (for Ricty)
-      homebrew_cask: name=xquartz
-    - name: fontforge のインストール (for Ricty)
-      homebrew: name=fontforge
-    - name: Ricty のインストール
-      homebrew: name=ricty
-    - name: 生成されたフォントファイルをコピー
-      shell: cp -f $(brew --cellar ricty)/*/share/fonts/Ricty*.ttf ~/Library/Fonts/
-      args:
-        creates: ~/Library/Fonts/Ricty-Bold.ttf
-      notify: run fc-cache
+    # Zinit
+    - name: Zinit のインストール
+      shell: curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh | sh
+    - name: .zshrcの読み込み
+      shell: source ~/.zshrc
+    - name: Zinitのプラグインアップデート
+      shell: zinit self-update
 
     # Macの設定
     - name: 隠しファイルを表示
