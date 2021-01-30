@@ -27,9 +27,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-hook_add = '''
-  source $XDG_CONFIG_HOME/nvim/plugins/denite.vim
-'''
+hook_add = 'source $XDG_CONFIG_HOME/nvim/plugins/denite.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
