@@ -1,8 +1,5 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
   name  = keigo0331
-  email = k.kamiyama3@gmail.com
 
 [alias]
   # add
