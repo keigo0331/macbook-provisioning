@@ -14,4 +14,4 @@ brew install ansible
 
 HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook -i hosts -vv localhost.yml
 
-https://t-wada.hatenablog.jp/entry/mac-provisioning-by-ansible
+ref) https://t-wada.hatenablog.jp/entry/mac-provisioning-by-ansible
