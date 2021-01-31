@@ -35,6 +35,7 @@
       - { name: brave-browser }
       - { name: docker }
       - { name: font-ricty-diminished }
+      - { name: dropbox }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
