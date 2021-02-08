@@ -36,6 +36,7 @@
       - { name: docker }
       - { name: font-ricty-diminished }
       - { name: dropbox }
+      - { name: 1password }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
